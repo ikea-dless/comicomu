@@ -1,17 +1,54 @@
-<h2>ログイン</h2>
+<div class="bs-docs-section">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="well bs-component">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-horizontal"}) do |f| %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div><%= f.label :username %><br />
-  <%= f.text_field :username, autofocus: true %></div>
+          <fieldset>
+            <%= devise_error_messages! %>
+              <legend>Log in</legend>
 
-  <div><%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+              <div class="form-group">
+                <%= f.label :username,"名前", class: "col-lg-3 control-label" %>
+                <div class="col-lg-8">
+                  <%= f.text_field :username, class: "form-control", autofocus: true %>
+                </div>
+              </div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
+              <div class="form-group">
+                <%= f.label :password,"パスワード", class: "col-lg-3 control-label" %>
+                <div class="col-lg-8">
+                  <%= f.password_field :password, class: "form-control", autocomplete: "off" %>
+                  <% if devise_mapping.rememberable? -%>
+                  <div class="check_box">
+                    <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+                  </div>
+                  <% end -%>
+                </div>
+              </div>
 
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
+              <div class="form-group">
+                <div class="col-lg-8 col-lg-offset-3">
+                  <%= f.submit "Sign in", class: "btn btn-primary" %>
+                </div>
+              </div>
 
-<%= render "devise/shared/links" %>
+          </fieldset>
+
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bs-docs-section">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="bs-component">
+        <div class="well">
+          <h3><%= render "devise/shared/links" %></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
