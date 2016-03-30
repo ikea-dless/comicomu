@@ -2,7 +2,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def twitter
     provider = twitter
     @user = User.find_for_oauth(request.env['omniauth.auth'])
-    binding.pry
     if @user.persisted?
       cookies.permanent[:comicomu_logined] = { value: @user.created_at }
       flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: provider.capitalize)
