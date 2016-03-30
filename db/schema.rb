@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160329095711) do
+ActiveRecord::Schema.define(version: 20160330063030) do
 
   create_table "posts", force: :cascade do |t|
-    t.text     "title",       limit: 65535
-    t.text     "body",        limit: 65535
+    t.text     "title",       limit: 65535,             null: false
+    t.text     "body",        limit: 65535,             null: false
     t.datetime "deadline_at",                           null: false
     t.integer  "user_id",     limit: 4
     t.integer  "status",      limit: 1,     default: 0, null: false

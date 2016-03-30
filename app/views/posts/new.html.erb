@@ -1,0 +1,43 @@
+<div class="bs-docs-section">
+  <div class="row">
+    <div class="col-lg-9">
+      <div class="well bs-component">
+          <%= form_for(@post, html: {class: "form-horizontal"}) do |f| %>
+
+          <fieldset>
+            <legend>Post</legend>
+
+            <div class="form-group">
+              <%= f.label :title, "タイトル", class: "col-lg-2 control-label" %>
+              <div class="col-lg-10">
+                <%= f.text_field :title, class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :deadline_at, "締め切り時刻", class: "col-lg-2 control-label" %>
+              <div class="col-lg-10">
+                <%= f.date_select :deadline_at, {}, class: "form-control" %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :body, "本文", class: "col-lg-2 control-label" %>
+              <div class="col-lg-10">
+                <%= f.text_area :body, class: "form-control", style: "margin-top: 0px; margin-bottom: 0px; height: 240px;" %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-lg-12 col-lg-offset-5">
+                <%= f.submit "Post", class: "col-lg-3 btn btn-primary btn-lg" %>
+              </div>
+            </div>
+
+          </fieldset>
+
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>

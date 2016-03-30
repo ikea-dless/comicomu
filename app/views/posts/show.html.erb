@@ -1,2 +1,32 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div class="bs-docs-section">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="page-header">
+        <h1><%= @post.title %> by <%= @post.user.username %></h1>
+          <p class="text-success"><%= @post.deadline_at.strftime("%Y年 %m月 %d日") %>締め切り</p>
+      </div>
+      <div class="bs-component">
+        <h2>
+          <%= simple_format @post.body %>
+        </h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% if user_signed_in? -%>
+<div class="bs-docs-section">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="bs-component">
+        <div class="well">
+          <h3>記事を削除</h3>
+          <p><%= button_to "記事を削除", post_path(id: @post.id,user_id: @post.user.id), class: "btn btn-danger",
+           data: { confirm: "記事を削除してもよろしいですか？" }, method: :delete %> </p>
+          <p> <%= link_to "戻る", :back %> </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end -%>
