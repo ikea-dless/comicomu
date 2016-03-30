@@ -1,6 +1,6 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def twitter
-    provider = twitter
+    provider = 'twitter'
     @user = User.find_for_oauth(request.env['omniauth.auth'])
     if @user.persisted?
       cookies.permanent[:comicomu_logined] = { value: @user.created_at }
