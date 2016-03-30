@@ -64,6 +64,9 @@ ja:
       unlock_instructions:
         subject: 'アカウントの凍結解除'
 #        subject: 'Unlock Instructions'
+    omniauth_callbacks:
+      failure: "\"%{reason}\"の理由により%{kind}の認証ができませんでした。."
+      success: "%{kind}からの認証に成功しました。"
     taken: "は既に使用されています。"
     blank: "が入力されていません。"
     too_short: "は%{count}文字以上に設定して下さい。"
