@@ -3,6 +3,7 @@ class TopsController < ApplicationController
   before_action :authenticate_user!, only: :show
 
   def index
+    @posts = Post.all
   end
 
   def show
