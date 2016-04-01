@@ -14,19 +14,19 @@
   </div>
 </div>
 
-<% if current_user.id == @post.user_id -%>
 <div class="bs-docs-section">
   <div class="row">
     <div class="col-lg-8">
-      <div class="bs-component">
-        <div class="well">
-          <h3>記事を削除</h3>
-          <p><%= button_to "記事を削除", post_path(id: @post.id,user_id: @post.user_id), class: "btn btn-danger",
-           data: { confirm: "記事を削除してもよろしいですか？" }, method: :delete %> </p>
-          <p> <%= link_to "戻る", :back %> </p>
-        </div>
+      <div class="well">
+        <% if current_user.id == @post.user_id -%>
+          <p class="bs-component">
+            <%= link_to "記事を編集", edit_post_path(id: @post.id,user_id: @post.user_id), class: "btn btn-success" %>
+            <%= link_to "記事を削除", post_path(id: @post.id,user_id: @post.user_id), class: "btn btn-danger",
+             data: { confirm: "記事を削除してもよろしいですか？" }, method: :delete %>
+          </p>
+        <% end -%>
+        <p><%= link_to "戻る", root_path, class: "btn btn-primary" %></p>
       </div>
     </div>
   </div>
 </div>
-<% end -%>
