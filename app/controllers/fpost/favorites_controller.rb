@@ -10,6 +10,18 @@ class Fpost::FavoritesController < ApplicationController
     redirect_to post_path(id: @post.id)
   end
 
+  def destroy
+    @post = Post.find(params[:post_id])
+    @favorite = @post.favorites.find_by(user_id: current_user.id)
+    if @favorite
+      @favorite.destroy
+      flash[:notice] = "参加を取り消しました。"
+    else
+      flash[:alert] = "失敗しました。"
+    end
+    redirect_to post_path(id: @post.id)
+  end
+
   private
 
     def user_favorites

@@ -33,7 +33,13 @@
         <% end -%>
         <% end %>
         <p class="bs-component">
-          <%= link_to("コミット", post_favorite_path(post_id: @post.id), class: "btn btn-info", method: :put) if user_signed_in? %>
+          <% if user_signed_in? %>
+            <% if @post.favorites.find_by(user_id: current_user.id) %>
+              <%= link_to "外す", post_favorite_path(post_id: @post.id), class: "btn btn-info", method: :delete %>
+            <% else %>
+              <%= link_to "コミット", post_favorite_path(post_id: @post.id), class: "btn btn-info", method: :put %>
+            <% end %>
+          <% end %>
           <%= link_to "戻る", root_path, class: "btn btn-primary" %>
         </p>
       </div>
