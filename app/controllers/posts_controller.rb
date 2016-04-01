@@ -19,6 +19,25 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
+  def edit
+    if current_user.id == params[:user_id].to_i
+      @post = Post.find(params[:id])
+    else
+      flash[:alert] = "自分の記事以外は編集できません。"
+    end
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    if @post.update_attributes(post_params)
+      flash[:notice] = "記事を更新しました。"
+      redirect_to @post
+    else
+      flash[:alert] = "記事の更新に失敗しました。"
+      render 'edit'
+    end
+  end
+
   def destroy
     if current_user.id == params[:user_id].to_i
       @post = Post.find(params[:id])
