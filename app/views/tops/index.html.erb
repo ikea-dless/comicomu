@@ -1,14 +1,16 @@
-<div class="page-header" id="banner">
+<div class="page-docs-section">
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12" style="margin-top: 0px; margin-bottom: 8px;">
       <center>
         <h1>ComiComu</h1>
         <p class="lead">みんなで勉強会を開こう</p>
-        <div><%= link_to "投稿する", new_post_path, class: "btn btn-primary btn-lg" %></div>
+        <div><%= link_to("投稿する", new_post_path, class: "btn btn-primary btn-lg") if user_signed_in? %></div>
       </center>
     </div>
 
-    <% @posts.each do |post| %>
+    <div class="col-lg-12">
+      <div class="row">
+      <% @posts.each do |post| %>
       <div class="col-lg-4 col-md-5 col-sm-6">
         <%= tag :div, class: post_status(post) %>
           <div class="panel-heading">
@@ -16,11 +18,16 @@
           </div>
           <div class="panel-body" style="margin-top: 2px; margin-bottom: 2px; height: 120px;">
             <p> <%= post.body.truncate(30, omission: '...') %> </p>
-            <%= link_to "詳細", post_path(post.id), class: "btn btn-success" %>
+            <span>
+              <%= link_to "詳細", post_path(post.id), class: "btn btn-success" %>
+            </span>
+            <span><small> <%= post.favorites.count %>人が参加 </small></span>
           </div>
-        </div>
+        </div> <!-- tag :divの閉じ -->
       </div>
-    <% end %>
+      <% end %>
+      </div>
+    </div>
 
   </div>
 </div>

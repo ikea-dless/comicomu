@@ -23,6 +23,7 @@
   <div class="row">
     <div class="col-lg-8">
       <div class="well">
+        <% if user_signed_in? %>
         <% if current_user.id == @post.user_id -%>
           <p class="bs-component">
             <%= link_to "記事を編集", edit_post_path(id: @post.id,user_id: @post.user_id), class: "btn btn-success" %>
@@ -30,8 +31,9 @@
              data: { confirm: "記事を削除してもよろしいですか？" }, method: :delete %>
           </p>
         <% end -%>
+        <% end %>
         <p class="bs-component">
-          <%= link_to "コミット", post_favorite_path(post_id: @post.id), class: "btn btn-info", method: :put %>
+          <%= link_to("コミット", post_favorite_path(post_id: @post.id), class: "btn btn-info", method: :put) if user_signed_in? %>
           <%= link_to "戻る", root_path, class: "btn btn-primary" %>
         </p>
       </div>
