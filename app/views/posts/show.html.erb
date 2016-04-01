@@ -4,6 +4,11 @@
       <div class="page-header">
         <h1><%= @post.title %> by <%= @post.user.username %></h1>
           <p class="text-success"><%= @post.deadline_at.strftime("%Y年 %m月 %d日") %>締め切り</p>
+          <p class="bs-componet">
+            <% @favorites.each do |favorite| %>
+            <span class="label label-info"><%= favorite.user.username %></span>
+            <% end %>
+          </p>
       </div>
       <div class="bs-component">
         <h2>
@@ -25,7 +30,10 @@
              data: { confirm: "記事を削除してもよろしいですか？" }, method: :delete %>
           </p>
         <% end -%>
-        <p><%= link_to "戻る", root_path, class: "btn btn-primary" %></p>
+        <p class="bs-component">
+          <%= link_to "コミット", post_favorite_path(post_id: @post.id), class: "btn btn-info", method: :put %>
+          <%= link_to "戻る", root_path, class: "btn btn-primary" %>
+        </p>
       </div>
     </div>
   </div>

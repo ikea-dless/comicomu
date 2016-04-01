@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   validates :username, presence: true, uniqueness: true
   has_many :posts, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   def self.find_for_oauth(auth)
     user = User.find_by(uid: auth.uid, provider: auth.provider)
