@@ -7,5 +7,8 @@ class TopsController < ApplicationController
   end
 
   def show
+    @user = current_user
+    @posts = @user.posts
+    @favorites = @user.favorites
   end
 end
