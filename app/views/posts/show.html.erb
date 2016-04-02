@@ -6,7 +6,7 @@
           <p class="text-success"><%= @post.deadline_at.strftime("%Y年 %m月 %d日") %>締め切り</p>
           <p class="bs-componet">
             <% @favorites.each do |favorite| %>
-            <span class="label label-info"><%= favorite.user.username %></span>
+            <%= link_to favorite.user.username, user_path(favorite.user.id), class: "label label-info" %>
             <% end %>
           </p>
       </div>
