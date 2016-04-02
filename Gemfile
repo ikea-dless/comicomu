@@ -16,21 +16,23 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
 gem 'omniauth-twitter'
+gem 'dotenv-rails'
+gem 'awesome_print', require: 'ap'
+gem 'pry-rails'
 
 # gem 'bcrypt', '~> 3.1.7'
-# gem 'unicorn'
-# gem 'capistrano-rails', group: :development
 
 group :development, :test do
   gem 'pry-byebug'
-  gem 'awesome_print', require: 'ap'
-  gem 'pry-rails'
   gem 'pry-doc'
   gem 'rubocop', require: false
-  gem 'dotenv-rails'
 end
 
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+end
+
+group :production, :staging do
+  gem 'unicorn'
 end
