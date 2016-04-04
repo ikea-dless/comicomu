@@ -9,17 +9,27 @@ class User < ActiveRecord::Base
   has_many :posts, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
-  def self.find_for_oauth(auth)
-    user = User.find_by(uid: auth.uid, provider: auth.provider)
-    unless user
-      user = User.create(
-        uid: auth.uid,
-        provider: auth.provider,
-        username: auth.info.name,
-        email: User.get_email(auth)
-      )
+  class << self
+    def find_for_oauth(auth)
+      user = User.find_by(uid: auth.uid, provider: auth.provider)
+      unless user
+        user = User.create(
+          uid: auth.uid,
+          provider: auth.provider,
+          username: auth.info.name,
+          email: User.get_email(auth)
+        )
+      end
+      user
     end
-    user
+
+    private
+
+      def get_email(auth)
+        email = auth.info.email
+        email = "#{auth.provider}-#{auth.uid}@example.com" if email.blank?
+        email
+      end
   end
 
   # providerがある場合（Twitter経由で認証した）は、
@@ -37,12 +47,4 @@ class User < ActiveRecord::Base
       super
     end
   end
-
-  private
-
-    def self.get_email(auth)
-      email = auth.info.email
-      email = "#{auth.provider}-#{auth.uid}@example.com" if email.blank?
-      email
-    end
 end
