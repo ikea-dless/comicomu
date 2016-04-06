@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users
   get 'tops/index'
   get 'tops/show'
+  get 'tops/about'
 
   root to: 'tops#index'
 end

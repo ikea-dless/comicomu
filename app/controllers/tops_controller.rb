@@ -11,4 +11,7 @@ class TopsController < ApplicationController
     @posts = @user.posts
     @favorites = @user.favorites
   end
+
+  def about
+  end
 end
