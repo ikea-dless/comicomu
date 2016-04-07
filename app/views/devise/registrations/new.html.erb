@@ -8,6 +8,10 @@
             <%= devise_error_messages! %>
             <legend>Sign up</legend>
 
+            <div>
+              Twitterのアカウントをお持ちの方は<%= link_to "こちら", user_omniauth_authorize_path(:twitter) %>
+            </div>
+
             <div class="form-group">
               <%= f.label :username,"名前", class: "col-lg-3 control-label" %>
               <div class="col-lg-8">
