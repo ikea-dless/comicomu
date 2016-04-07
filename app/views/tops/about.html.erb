@@ -1,0 +1,37 @@
+<div class="bs-docs-section">
+  <div class="row">
+    <div class="col-lg-12">
+
+      <div class="page-header">
+        <h1>ComiComuとは</h1>
+      </div>
+
+      <div class="bs-component">
+        <h2>勉強会しようよ！</h2>
+        <p>
+          あんなこと、こんなこと、学んだ知識を共有しませんか？<br />
+          テーマを決めて勉強会を開きましょう。<br />
+          <br />
+          会員であれば勉強会を開いたり、参加したりができます！<br />
+          会員登録は<%= link_to "ベーシック認証", new_user_registration_path %>
+           or
+          <%= link_to "Twitter認証", user_omniauth_authorize_path(:twitter) %>
+          <br />
+          勉強会への参加表明はコミットボタン。<span class="btn btn-info">コミット</span><br />
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bs-docs-section">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="well">
+        <p class="bs-component">
+          <%= link_to "戻る", root_path, class: "btn btn-primary" %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
