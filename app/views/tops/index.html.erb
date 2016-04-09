@@ -13,7 +13,7 @@
       <div class="col-lg-4 col-md-5 col-sm-6">
         <%= tag :div, class: post_status(post) %>
           <div class="panel-heading">
-            <h4 class="panel-title"><%= post.title %></h4>
+            <h4 class="panel-title"><%= link_to post.title, post_path(post.id) %></h4>
           </div>
           <div class="panel-body" style="margin-top: 2px; margin-bottom: 2px; height: 120px;">
             <p> <%= post.body.truncate(30, omission: '...') %> </p>
