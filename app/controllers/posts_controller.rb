@@ -8,6 +8,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @favorites = @post.favorites
+    @comments = @post.comments
   end
 
   def create
