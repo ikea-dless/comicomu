@@ -19,30 +19,6 @@
   </div>
 </div>
 
-<div class="bs-docs-section">
-  <div class="row">
-    <div class="col-lg-8">
-      <div class="well">
-        <% if user_signed_in? %>
-        <% if current_user.id == @post.user_id -%>
-          <p class="bs-component">
-            <%= link_to "記事を編集", edit_post_path(id: @post.id,user_id: @post.user_id), class: "btn btn-success" %>
-            <%= link_to "記事を削除", post_path(id: @post.id,user_id: @post.user_id), class: "btn btn-danger",
-             data: { confirm: "記事を削除してもよろしいですか？" }, method: :delete %>
-          </p>
-        <% end -%>
-        <% end %>
-        <p class="bs-component">
-          <% if user_signed_in? %>
-            <% if @post.favorites.find_by(user_id: current_user.id) %>
-              <%= link_to "外す", post_favorite_path(post_id: @post.id), class: "btn btn-info", method: :delete %>
-            <% else %>
-              <%= link_to "コミット", post_favorite_path(post_id: @post.id), class: "btn btn-info", method: :put %>
-            <% end %>
-          <% end %>
-          <%= link_to "戻る", root_path, class: "btn btn-primary" %>
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
+
+<%= render 'comment' %>
+<%= render 'operation' %>
