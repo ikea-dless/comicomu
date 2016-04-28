@@ -54,3 +54,6 @@ Style/SignalException:
 
 Style/IndentationConsistency:
   EnforcedStyle: rails
+
+Style/BracesAroundHashParameters:
+  EnforcedStyle: context_dependent
