@@ -27,28 +27,28 @@ set :pty, true
 # set :linked_files, %w{config/database.yml}
 
 # Default value for linked_dirs is []
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/assets}
+set :linked_dirs, %w(bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/assets)
 
 # Default value for default_env is {}
-set :default_env, { path: "/home/guts/.rbenv/shims:/home/guts/.rbenv/bin:$PATH" }
+set :default_env, path: '/home/guts/.rbenv/shims:/home/guts/.rbenv/bin:$PATH'
 
 # Default value for keep_releases is 5
 set :keep_releases, 5
 
+after 'deploy:publishing', 'deploy:restart'
 namespace :deploy do
-
   desc 'Restart application'
   task :restart do
     invoke 'unicorn:restart'
   end
 
-  #> 上記linked_filesで使用するファイルをアップロードするタスク
+  # 上記linked_filesで使用するファイルをアップロードするタスク
   #  deployが行われる前に実行する必要がある。
   desc 'upload importabt files'
   task :upload do
-    on roles(:app) do |host|
-      upload!('config/secrets.yml',"#{shared_path}/config/secrets.yml")
-      upload!('.env',"#{shared_path}/.env")
+    on roles(:app) do
+      upload!('config/secrets.yml', "#{shared_path}/config/secrets.yml")
+      upload!('.env', "#{shared_path}/.env")
     end
   end
 end
