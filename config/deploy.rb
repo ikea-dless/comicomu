@@ -6,9 +6,8 @@ set :scm, :git
 set :log_level, :debug
 set :pty, true
 
-set :linked_dirs, %w(bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/assets)
+set :linked_dirs, %w(bin bundle log tmp/pids tmp/cache tmp/sockets public/system public/assets)
 
-set :default_env, path: '/home/guts/.rbenv/shims:/home/guts/.rbenv/bin:$PATH'
 
 # Default value for keep_releases is 5
 set :keep_releases, 5
@@ -25,7 +24,11 @@ namespace :deploy do
   desc 'upload importabt files'
   task :upload do
     on roles(:app) do
+      if test "[ ! -d #{shared_path}/config ]"
+        execute "mkdir -p #{shared_path}/config"
+      end
       upload!('config/secrets.yml', "#{shared_path}/config/secrets.yml")
+      upload!('config/database.yml', "#{shared_path}/config/database.yml")
       upload!('.env', "#{shared_path}/.env")
     end
   end

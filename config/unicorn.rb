@@ -19,9 +19,8 @@ preload_app true
 # before starting processes
 before_fork do |server, worker|
   ENV['BUNDLE_GEMFILE'] = File.expand_path('Gemfile', working_directory)
-  defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!
   old_pid = "#{server.config[:pid]}.oldbin"
-  if old_pid != server.pid
+  if File.exists?(old_pid) && server.pid != old_pid
     begin
       sig = (worker.nr + 1) >= server.worker_processes ? :QUIT : :TTOU
       Process.kill(sig, File.read(old_pid).to_i)
