@@ -7,8 +7,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'bootstrap-sass'
 gem 'honoka-rails', '>= 3.3.6.3'
-# gem 'therubyracer', platforms: :ruby
-
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
@@ -21,6 +19,11 @@ gem 'awesome_print', require: 'ap'
 gem 'pry-rails'
 
 # gem 'bcrypt', '~> 3.1.7'
+
+group :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
 
 group :development, :test do
   gem 'pry-byebug'
@@ -36,6 +39,7 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'spring-commands-rspec'
 end
 
 group :production do
