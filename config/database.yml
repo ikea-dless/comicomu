@@ -15,7 +15,7 @@ default: &default
   pool: 5
   username: root
   password:
-  host: localhost
+  socket: /tmp/mysql.sock
 
 development:
   <<: *default
@@ -50,5 +50,3 @@ test:
 production:
   <<: *default
   database: comicomu_production
-  username: comicomu
-  password: <%= ENV['COMICOMU_DATABASE_PASSWORD'] %>

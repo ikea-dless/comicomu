@@ -38,6 +38,7 @@ group :development do
   gem 'spring'
 end
 
-group :production, :staging do
+group :production do
   gem 'unicorn'
+  gem 'therubyracer', platforms: :ruby
 end
