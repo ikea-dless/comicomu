@@ -4,7 +4,8 @@ Rails.application.routes.draw do
     resource :comments
   end
   devise_for :users, controllers: {
-    omniauth_callbacks: 'omniauth_callbacks' }
+    omniauth_callbacks: 'omniauth_callbacks'
+  }
   resources :users
   get 'tops/index'
   get 'tops/show'

@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.3.0'
 
 gem 'rails', '4.2.6'
 gem 'mysql2', '>= 0.3.13', '< 0.5'
@@ -21,11 +22,13 @@ gem 'pry-rails'
 # gem 'bcrypt', '~> 3.1.7'
 
 group :test do
-  gem 'rspec-rails'
   gem 'factory_girl_rails'
 end
 
 group :development, :test do
+  gem 'minitest'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers', '2.5.0'
   gem 'pry-byebug'
   gem 'pry-doc'
   gem 'rubocop', require: false
@@ -40,6 +43,9 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'spring-commands-rspec'
+  gem 'guard-rspec', require: false
+  gem 'guard-spring'
+  gem 'guard-rubocop'
 end
 
 group :production do
