@@ -218,6 +218,8 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    shoulda-matchers (2.5.0)
+      activesupport (>= 3.0.0)
     slop (3.6.0)
     spring (1.6.4)
     spring-commands-rspec (1.0.4)
@@ -276,6 +278,7 @@ DEPENDENCIES
   honoka-rails (>= 3.3.6.3)
   jbuilder (~> 2.0)
   jquery-rails
+  minitest
   mysql2 (>= 0.3.13, < 0.5)
   omniauth-twitter
   pry-byebug
@@ -286,6 +289,7 @@ DEPENDENCIES
   rubocop
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  shoulda-matchers (= 2.5.0)
   spring
   spring-commands-rspec
   therubyracer

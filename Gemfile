@@ -21,11 +21,13 @@ gem 'pry-rails'
 # gem 'bcrypt', '~> 3.1.7'
 
 group :test do
-  gem 'rspec-rails'
   gem 'factory_girl_rails'
 end
 
 group :development, :test do
+  gem 'minitest'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers', '2.5.0'
   gem 'pry-byebug'
   gem 'pry-doc'
   gem 'rubocop', require: false
