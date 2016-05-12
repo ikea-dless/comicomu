@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.3.0'
 
 gem 'rails', '4.2.6'
 gem 'mysql2', '>= 0.3.13', '< 0.5'
@@ -42,6 +43,9 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'spring-commands-rspec'
+  gem 'guard-rspec', require: false
+  gem 'guard-spring'
+  gem 'guard-rubocop'
 end
 
 group :production do
