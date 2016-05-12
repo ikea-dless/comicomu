@@ -8,7 +8,6 @@ set :pty, true
 
 set :linked_dirs, %w(bin bundle log tmp/pids tmp/cache tmp/sockets public/system public/assets)
 
-
 # Default value for keep_releases is 5
 set :keep_releases, 5
 
