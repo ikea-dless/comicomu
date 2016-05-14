@@ -7,7 +7,7 @@ class Fpost::FavoritesController < ApplicationController
     else
       flash[:alert] = "失敗しました。"
     end
-    redirect_to post_path(id: @post.id)
+    @favorites = @post.favorites
   end
 
   def destroy
@@ -19,7 +19,7 @@ class Fpost::FavoritesController < ApplicationController
     else
       flash[:alert] = "失敗しました。"
     end
-    redirect_to post_path(id: @post.id)
+    @favorites = @post.favorites
   end
 
   private
