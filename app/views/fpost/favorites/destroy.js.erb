@@ -1,0 +1,9 @@
+$('#notification').html(
+  '<%= j(render 'layouts/notification') %>'
+);
+$('#favorites').html(
+  '<%= j(render partial: 'posts/favorite', collection: @favorites) %>'
+);
+$('#operation').html(
+  '<%= j(render 'posts/operation', object: @post) %>'
+);

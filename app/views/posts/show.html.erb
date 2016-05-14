@@ -5,9 +5,9 @@
         <h1><%= @post.title %> by <%= @post.user.username %></h1>
           <p class="text-success"><%= @post.deadline_at.strftime("%Y年 %m月 %d日") %>締め切り</p>
           <p class="bs-componet">
-            <% @favorites.each do |favorite| %>
-            <%= link_to favorite.user.username, user_path(favorite.user.id), class: "label label-info" %>
-            <% end %>
+            <div id="favorites">
+              <%= render partial: 'favorite', collection: @favorites %>
+            </div>
           </p>
       </div>
       <div class="bs-component">
@@ -21,4 +21,6 @@
 
 
 <%= render 'comment' %>
-<%= render 'operation' %>
+<div id="operation">
+  <%= render 'operation', object: @post %>
+</div>

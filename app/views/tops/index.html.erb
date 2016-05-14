@@ -9,22 +9,7 @@
     </div>
 
     <div class="col-lg-12">
-      <% @posts.each do |post| %>
-      <div class="col-lg-4 col-md-5 col-sm-6">
-        <%= tag :div, class: post_status(post) %>
-          <div class="panel-heading">
-            <h4 class="panel-title"><%= link_to post.title, post_path(post.id) %></h4>
-          </div>
-          <div class="panel-body" style="margin-top: 2px; margin-bottom: 2px; height: 120px;">
-            <p> <%= post.body.truncate(30, omission: '...') %> </p>
-            <span>
-              <%= link_to "詳細", post_path(post.id), class: "btn btn-primary" %>
-            </span>
-            <span><small> <%= post.favorites.count %>人が参加 </small></span>
-          </div>
-        </div> <!-- tag :divの閉じ -->
-      </div>
-      <% end %>
+      <%= render partial: 'post', collection: @posts %>
     </div>
 
   </div>
