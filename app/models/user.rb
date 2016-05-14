@@ -23,13 +23,11 @@ class User < ActiveRecord::Base
       user
     end
 
-    private
-
-      def get_email(auth)
-        email = auth.info.email
-        email = "#{auth.provider}-#{auth.uid}@example.com" if email.blank?
-        email
-      end
+    def get_email(auth)
+      email = auth.info.email
+      email = "#{auth.provider}-#{auth.uid}@example.com" if email.blank?
+      email
+    end
   end
 
   # providerがある場合（Twitter経由で認証した）は、
